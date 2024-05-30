@@ -1,0 +1,17 @@
+version: "3.8"  # Docker Compose file version
+
+services:
+  postgres_service:  # Service name
+    container_name: threads-db  # Container ka naam
+    image: postgres  # PostgreSQL image
+    ports:
+      - "5432:5432"  # Host port:Container port mapping
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Volume mapping for data persistence
+    environment:
+      POSTGRES_USER: postgres  # Environment variables for PostgreSQL configuration
+      POSTGRES_DB: threads
+      POSTGRES_PASSWORD: threads
+
+volumes:
+  postgres_data:  # Named volume for PostgreSQL data persistence
