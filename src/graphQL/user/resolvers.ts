@@ -1,11 +1,10 @@
-import UserService, { CreateUserPayload } from "../../services/user";
+import UserService, { CreateUserPayload, getUserTokenPayload } from "../../services/user";
 
 const queries = {
-        hello: () => "Hey there, I'm graphQL server.",
-
-        sayMyName: (_, { name }) => {
-          return `Hey my name is ${name}`;
-        }
+  getUserToken: async (_, payload: getUserTokenPayload) => {
+      const token = await UserService.getUserToken(payload)
+      return token;
+    }
 };
 
 const mutation = {
