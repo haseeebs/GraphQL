@@ -4,7 +4,17 @@ const queries = {
   getUserToken: async (_, payload: getUserTokenPayload) => {
       const token = await UserService.getUserToken(payload)
       return token;
-    }
+    },
+
+  getCurrentLoggedInUser: async (_, parameters, context) => {
+    if(context && context.user) {
+      const id = context.user.id;
+      const user = await UserService.getUserById(id);
+      return user;
+    }; 
+    
+    return new Error('kya bhiya kya cahn riya hai...')
+  }
 };
 
 const mutation = {

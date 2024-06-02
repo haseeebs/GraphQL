@@ -1,5 +1,8 @@
-import { queries } from "./queries";
-
 export const typeDefs = `#graphql
-    ${queries}
+    type User {
+        id: ID,
+        firstName: String!,
+        lastName: String,
+        email: String!
+    }
 `
